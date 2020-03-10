@@ -1,4 +1,3 @@
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -150,7 +149,7 @@ public class SnakeGame extends JFrame {
 		if (hitTheFood(newHead)) {
 			foodList.add(new Coordinate());
 			poisonList.add(new Coordinate());
-			delay  = delay - 5;
+			delay = delay - 5;
 			timer.setDelay(delay);
 			foodCounter++;
 		} else {
@@ -214,6 +213,7 @@ public class SnakeGame extends JFrame {
 		String[] options = new String[] {"Play again","Quit"};
 		int choice = JOptionPane.showOptionDialog(null, message, "Game over", JOptionPane.YES_NO_OPTION, 
 				JOptionPane.QUESTION_MESSAGE,null,options,options[0]);
+		delay = 150; //reset speed
 
 		if (choice == 0) {
 			initialize();
@@ -225,7 +225,8 @@ public class SnakeGame extends JFrame {
 	// Initialize game (snake, food, etc)
 	private void initialize() {
 		status = Game.ON;
-
+		foodCounter = 0;
+		timer.setDelay(150);
 		// Make a small snake with 1 node (a 10x10 pixel coordinate)
 		snake.clear(); // remove all of the elements of the LinkedList
 		snake.add(new Coordinate()); // append the new element to the end of the LinkedList
